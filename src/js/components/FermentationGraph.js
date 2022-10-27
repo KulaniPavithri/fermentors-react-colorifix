@@ -15,6 +15,7 @@ const FermentationGraph = (props) => {
             createPlot();
     }, [props.fermentationItem]);
 
+    //create connected scatter plot with multiple series to visualize ph, oxygen, temperature
     const createPlot = () => {
 
         let eventProperties = ["ph", "dissolvedOxygen", "temperature"];
