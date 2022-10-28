@@ -7,10 +7,11 @@
     "start": "webpack-dev-server --open --mode development",
     "dev": "webpack serve --mode development",
     "build": "webpack --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
+  "homepage": "https://KulaniPavithri.github.io/fermentors-react-colorifix",
   "license": "ISC",
   "dependencies": {
     "css-loader": "^6.7.1",
