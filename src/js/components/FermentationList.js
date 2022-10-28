@@ -1,7 +1,11 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import FermentationGraph from "./FermentationGraph";
+import FermentationItem from "./FermentationItem";
 
+//list of the fermentation runs for a given fermentor
 const FermentationList = (props) => {
+    let location = useLocation();
     const [data, setData] = React.useState (null);
     const [fermentationRunList, setFermentationRunList] = React.useState([]);
     let fermentationList = [];
@@ -11,13 +15,12 @@ const FermentationList = (props) => {
     }
 
     React.useEffect (() =>{
+        
         try{
-            fetch('https://s3.us-west-2.amazonaws.com/secure.notion-static.com/80fd8d77-cec2-4a8c-8663-55fe44cde887/AA0C-8AD7B319D4A4N.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221027%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221027T212852Z&X-Amz-Expires=86400&X-Amz-Signature=a4966e6f0d631211dd4d07b44b2bdda712cad92e30d0a1809b3f2de11eedfa79&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22AA0C-8AD7B319D4A4N.json%22&x-id=GetObject')
+            fetch(location.state)
                 .then(response => response.json())
                 .then((result) => {
-
                     setData(result);
-                    //console.log(result);
                 });
         } catch( error ) {
             console.log (error);
@@ -29,15 +32,12 @@ const FermentationList = (props) => {
         if(data){
 
             data.forEach ((fEvent, lastIndex, data) => {
-                //console.log("fermentID " + fEvent.fermentation_run);
                 
                 eventReducer(fEvent, lastIndex == data.length - 1);
                
             });
             
-            //console.log("list list list");
-            //console.log (fermentationList);
-            setFermentationRunList([...fermentationRunList, ...fermentationList]);
+            setFermentationRunList([...fermentationList]);
             
         }
     }, [data]);
@@ -53,7 +53,7 @@ const FermentationList = (props) => {
                 fermentationItem.ph = [];
                 fermentationItem.dissolvedOxygen = [];
                 fermentationItem.temperature = [];
-                break;
+                return;
             
             case "MeasurePh":
                 fermentationItem.ph.push (event.event_properties[0].value);
@@ -76,7 +76,7 @@ const FermentationList = (props) => {
                     dissolvedOxygen: fermentationItem.dissolvedOxygen, 
                     temperature: fermentationItem.temperature 
                 }); 
-                break;
+                return;
         }
 
         if (isLastIndex) {
@@ -92,8 +92,13 @@ const FermentationList = (props) => {
     }
 
     return (
-        <div>
-            <FermentationGraph fermentationItem = {fermentationRunList[0]}/>
+        
+        <div id="graph-data">
+            {
+                fermentationRunList.map((item) => {
+                    return <FermentationItem fermentationItem={item} key={item.fermentationID}/>;
+                })
+            }
         </div>
     );
 }

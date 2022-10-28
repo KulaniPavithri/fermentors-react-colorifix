@@ -1,5 +1,6 @@
 import React from "react";
 import * as d3 from 'd3';
+import { useLocation } from "react-router-dom";
 
 const FermentationGraph = (props) => {
     
@@ -8,10 +9,7 @@ const FermentationGraph = (props) => {
     const padding = 75;
 
     React.useEffect (() => {
-        
-        //console.log("inside graph");
-        //console.log(props.fermentationItem);
-        if(props.fermentationItem)
+       if(props.fermentationItem)
             createPlot();
     }, [props.fermentationItem]);
 
@@ -33,9 +31,7 @@ const FermentationGraph = (props) => {
                 })
             };
         });
-        //console.log("graph data");
-        console.log(graphData);
-
+        
         //color scale - one color for each event property
         let propertyColors = d3.scaleOrdinal()
             .domain(eventProperties)
@@ -72,8 +68,7 @@ const FermentationGraph = (props) => {
                 return max;
             else return current.values.length;
         }, 0);
-        //console.log("xmax " + xMax);
-
+        
         // add x-axis
         let xScale = d3.scaleLinear()
             .domain([0, xMax])
@@ -99,7 +94,6 @@ const FermentationGraph = (props) => {
         let maxTemp = maxValue(props.fermentationItem.temperature);
         
         let yMax = maxValue([maxPh, maxOxygen, maxTemp]);
-        //console.log("ymax " + yMax);
         
         // add x-axis
         let yScale = d3.scaleLinear()
@@ -141,9 +135,10 @@ const FermentationGraph = (props) => {
             .attr("r", 5)
             .attr("stroke", "white")
             .on("mouseover", (event, d) => { //add tooltip
-                tooltip.style("opacity", 0.8);
+                tooltip.style("opacity", 0.9);
                 tooltip.attr('value', d.value);
-                tooltip.html(d.value)
+                tooltip.html("Event No: " + d.eventNo + '<br />' + 
+                "Value: " + d.value)
                 .style('left', event.pageX + 'px')
                 .style('top', event.pageY - 28 + 'px');
             }).on("mouseout", () =>{

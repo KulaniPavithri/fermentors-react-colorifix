@@ -1,22 +1,23 @@
 
 #container{
+    margin-top: 65px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     background-color:white;
     width: 800px;
-    height: 600px;
+    height: 500px;
 }
 
 #title{
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
-#scatter-plot{
+/*#scatter-plot{
     padding: 20px 20px 20px 20px;
-}
+}*/
 
 
 #x-axis path{
@@ -36,10 +37,44 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    text-align: center;
+    font-size: 15px;
+    text-align: left;
     background: #a2dbe6;
     box-shadow: 1px 1px 10px;
     border-radius: 2px;
     pointer-events: none;
     padding: 10px;
+}
+
+#graph-data{
+    margin-top: 70px;
+    display: flex;
+    justify-content:flex-start;
+    flex-direction: row;
+    background-color:white;
+    
+}
+
+#fermentation-run{
+    border: solid 1px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content:flex-start;
+    flex-direction: column;
+    background-color:white;
+    overflow-y: auto;
+}
+
+#table-info{
+    display: flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-direction: row;
+}
+
+#table{
+    border: solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 }
