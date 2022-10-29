@@ -1,6 +1,6 @@
 ## fermentors-react-colorifix
 
-Please use google chrome browser to open local host or following link. This project is not working properly on firefox.
+Please use google chrome browser to open local host or following link. This project is not working properly on firefox due to React Router version used here.
 
 You can access the deployed gh-page here - https://kulanipavithri.github.io/fermentors-react-colorifix/
 
