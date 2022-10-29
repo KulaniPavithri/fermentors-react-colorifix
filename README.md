@@ -12,7 +12,7 @@ Download code and install
 6. Enter following command to install dependencies - npm install
 7. Run the code - npm run dev
 
-Technologies - React, JSX, HTML, CSS, Bootstrap, Webpack
+Technologies - React, D3.js JSX, HTML, CSS, Bootstrap, Webpack
 
 Assumptions and Improvements
 
