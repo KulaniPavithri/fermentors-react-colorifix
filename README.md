@@ -21,3 +21,10 @@ Assumptions and Improvements
 3. This implementation focused mainly on developing given main functionalities
 4. See Fermentor-functionalities.pdf for screenshots of the main functionalities
 5. User interface design and UX experience can be improved in many ways - pagination, navigation, responsiveness, etc. Due to time constraints I didn't have time to focus on those areas
+
+Rough Timeline of project implementation
+  - Analysis of requirements and indentification of main features and functionalities - 15 min
+  - Design of the basic flow and data visualization - 10 min
+  - Identification of main components - 10 min
+  - Development - Implement basic skeleton of fetching and extracting data and creating graph to visualize data - 1.5 hours
+  - Complete the implementation to list all fermentors and fermentation runs of each fermentor and to visualize data and graphs for each fermentation run. - 3 hours
